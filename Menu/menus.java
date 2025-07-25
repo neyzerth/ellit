@@ -6,9 +6,10 @@ package Menu;
 // Solo imprime menús. La lógica se maneja en otras clases.
 
 import java.util.Scanner;
-
+import Comentarios.FuncionesComentarios;
 import Rutinas.FuncionesRutinas;
 import Usuario.FuncionesUsuario;
+
 
 public class menus {
 
@@ -35,7 +36,9 @@ public class menus {
                 case 1:
                     FuncionesUsuario.verPerfil();
                     break;
-                    
+                       case 2:
+                     FuncionesComentarios.menuComentarios();
+                    break;
                 case 3:
     FuncionesRutinas.menuRutinas();
     break;
@@ -70,6 +73,9 @@ public class menus {
                 case 1:
                     FuncionesUsuario.menuGestionUsuarios();
                     break;
+                    case 2:
+                     FuncionesComentarios.menuGestionComentarios();
+                    break;
                     case 3:
                     FuncionesRutinas.menuGestionRutinas();
                  break;
@@ -99,6 +105,10 @@ public class menus {
                 case 1:
                     FuncionesUsuario.verPerfil();
                     break;
+                     case 2:
+                     FuncionesComentarios.menuComentarios();
+                    break;
+
                     case 3:
     FuncionesRutinas.menuRutinas();
     break;
