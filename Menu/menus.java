@@ -126,4 +126,8 @@ public class menus {
 
         return FuncionesUsuario.validarNumero(min, max);
     }
+
+    public static void mostrarTienda(){
+        
+    }
 }
