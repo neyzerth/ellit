@@ -24,7 +24,7 @@ public class Inicio {
         // Bienvenida al sistema
         // ===============================
         System.out.println("=====================================");
-        System.out.println("      BIENVENIDO A ELLIT");
+        System.out.println("      BIENVENIDO A ELLIT 2");
         System.out.println("=====================================");
 
         // Llamamos a la función login del sistema
