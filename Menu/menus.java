@@ -1,15 +1,10 @@
 package Menu;
-// ===============================
-// Clase menus.java
-// ===============================
-// Contiene los menús visibles (usuario, admin, menú normal para admin)
-// Solo imprime menús. La lógica se maneja en otras clases.
 
-import java.util.Scanner;
+
 import Comentarios.FuncionesComentarios;
 import Rutinas.FuncionesRutinas;
 import Usuario.FuncionesUsuario;
-
+import java.util.Scanner;
 
 public class menus {
 
@@ -36,10 +31,10 @@ public class menus {
                 case 1:
                     FuncionesUsuario.verPerfil();
                     break;
-                       case 2:
+                      case 2:
                      FuncionesComentarios.menuComentarios();
                     break;
-                case 3:
+                     case 3:
     FuncionesRutinas.menuRutinas();
     break;
                 case 7:
@@ -97,18 +92,25 @@ public class menus {
     public static void menuNormalParaAdmin() {
         int op = 0;
         do {
+            System.out.println("\n--- Menú Usuario (Admin) ---");
+            System.out.println("1. Ver perfil");
+            System.out.println("2. Comentarios");
+            System.out.println("3. Rutinas");
+            System.out.println("4. Planes Nutricionales");
+            System.out.println("5. Entrenadores");
+            System.out.println("6. Tienda");
+            System.out.println("7. Cerrar sesión");
+            System.out.println("8. Volver a menú admin");
 
-            String[] opciones = {"Ver perfil", "Comentarios", "Rutinas", "Planes Nutricionales", "Tienda", "Cerrar sesion"};
-            op = imprimirMenu("Menu Usuario (Admin 2)", "Volver a menu admin", opciones);
+            op = FuncionesUsuario.validarNumero(1, 8);
 
             switch (op) {
                 case 1:
                     FuncionesUsuario.verPerfil();
                     break;
-                     case 2:
+                    case 2:
                      FuncionesComentarios.menuComentarios();
                     break;
-
                     case 3:
     FuncionesRutinas.menuRutinas();
     break;
@@ -122,18 +124,5 @@ public class menus {
                     System.out.println("Esta opción aún no está disponible.");
             }
         } while (op != 7 && op != 8);
-    }
-
-    public static int imprimirMenu(String titulo, String regresar, String[] opciones){
-        int min = 1;
-        int max = opciones.length + 1;
-
-        System.out.println("\n--- "+ titulo +" ---");
-        for (int i = 0; i < opciones.length; i++) {
-            System.out.println(i+1+". "+ opciones[i]);
-        }
-        System.out.println(max+". " + regresar);
-
-        return FuncionesUsuario.validarNumero(min, max);
     }
 }
