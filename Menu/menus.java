@@ -3,6 +3,8 @@ package Menu;
 
 import Comentarios.FuncionesComentarios;
 import Rutinas.FuncionesRutinas;
+import Tienda.FuncionesTienda;
+import Tienda.FuncionesTiendaAdmin;
 import Usuario.FuncionesUsuario;
 import java.util.Scanner;
 
@@ -35,8 +37,11 @@ public class menus {
                      FuncionesComentarios.menuComentarios();
                     break;
                      case 3:
-    FuncionesRutinas.menuRutinas();
-    break;
+                     FuncionesRutinas.menuRutinas();
+                    break;
+                     case 6:  
+                    FuncionesTienda.menuTienda();
+                    break;
                 case 7:
                     FuncionesUsuario.cerrarSesion();
                     break;
@@ -74,6 +79,9 @@ public class menus {
                     case 3:
                     FuncionesRutinas.menuGestionRutinas();
                  break;
+                 case 6:  
+                    FuncionesTiendaAdmin.menuTiendaAdmin();
+                    break;
                 case 7:
                     menuNormalParaAdmin();
                     break;
@@ -112,8 +120,11 @@ public class menus {
                      FuncionesComentarios.menuComentarios();
                     break;
                     case 3:
-    FuncionesRutinas.menuRutinas();
-    break;
+                   FuncionesRutinas.menuRutinas();
+                 break;
+                 case 6: 
+                    FuncionesTienda.menuTienda();
+                    break;
                 case 7:
                     FuncionesUsuario.cerrarSesion();
                     break;
