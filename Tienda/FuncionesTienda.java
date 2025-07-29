@@ -96,8 +96,10 @@ public class FuncionesTienda {
         System.out.println("4. Equipamiento");
         System.out.print("Seleccione una categoría: ");
         
-        int opcion = FuncionesUsuario.validarNumero(1, 4);
+       int opcion = FuncionesUsuario.validarNumero(1, 4);
 String categoria;
+
+// Switch tradicional compatible con versiones anteriores de Java
 switch (opcion) {
     case 1:
         categoria = "Suplementos";
