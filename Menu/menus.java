@@ -2,6 +2,7 @@ package Menu;
 
 
 import Comentarios.FuncionesComentarios;
+import Entrenadores.FuncionesEntrenador;
 import Rutinas.FuncionesRutinas;
 import Tienda.FuncionesTienda;
 import Tienda.FuncionesTiendaAdmin;
@@ -39,6 +40,9 @@ public class menus {
                      case 3:
                      FuncionesRutinas.menuRutinas();
                     break;
+                     case 5: 
+                    FuncionesEntrenador.menuEntrenadores();
+                   break;
                      case 6:  
                     FuncionesTienda.menuTienda();
                     break;
@@ -79,6 +83,9 @@ public class menus {
                     case 3:
                     FuncionesRutinas.menuGestionRutinas();
                  break;
+                 case 5: 
+    FuncionesEntrenador.menuGestionEntrenadores();
+    break;
                  case 6:  
                     FuncionesTiendaAdmin.menuTiendaAdmin();
                     break;
@@ -122,6 +129,9 @@ public class menus {
                     case 3:
                    FuncionesRutinas.menuRutinas();
                  break;
+                     case 5: 
+                    FuncionesEntrenador.menuEntrenadores();
+                   break;
                  case 6: 
                     FuncionesTienda.menuTienda();
                     break;
