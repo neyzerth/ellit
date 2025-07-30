@@ -1,13 +1,10 @@
 package Usuario;
-// ===============================
-// Clase FuncionesUsuario.java
-// ===============================
+//hecho por Daniel Barrientos
 // Contiene todas las funciones de interacción con el usuario (login, registro, modificar datos, etc.)
 
+import Menu.menus;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import Menu.menus;
 
 public class FuncionesUsuario {
     static Scanner sc = new Scanner(System.in);
@@ -19,7 +16,17 @@ public class FuncionesUsuario {
    public static void login() {
     int opcion;
     do {
-        System.out.println("¿Ya tienes una cuenta? (1. Sí | 2. No)");
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║                                        ║");
+System.out.println("║        ¿YA TIENES UNA CUENTA?          ║");
+System.out.println("║                                        ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║                                        ║");
+System.out.println("║  1. Sí, ingresar credenciales          ║");
+System.out.println("║  2. No, deseo registrarme              ║");
+System.out.println("║                                        ║");
+System.out.println("╚════════════════════════════════════════╝");
+System.out.print(" Selecciona una opción: ");
         opcion = validarNumero(1, 2);
 
         if (opcion == 2) {
@@ -30,6 +37,12 @@ public class FuncionesUsuario {
         boolean sesionIniciada = false;
 
         while (!sesionIniciada) {
+    System.out.println("╔════════════════════════════════════════╗");
+    System.out.println("║                                        ║");
+    System.out.println("║          INICIO DE SESIÓN              ║");
+    System.out.println("║                                        ║");
+    System.out.println("╚════════════════════════════════════════╝");
+    System.out.println("══════════════════════════════════════════");
             System.out.print("Usuario: ");
             String nombre = sc.next();
             System.out.print("Contraseña: ");
@@ -66,32 +79,98 @@ public class FuncionesUsuario {
     // ===============================
     // Registro de nuevo usuario
     // ===============================
-    public static void registro() {
-        Usuario u = new Usuario();
-        sc.nextLine(); // limpiar buffer
+   public static void registro() {
+    Usuario u = new Usuario();
+    sc.nextLine(); // Limpiar buffer
 
+    // Validación nombre de usuario (único)
+    boolean usuarioExiste;
+    do {
+        usuarioExiste = false;
         System.out.print("Nombre de usuario: ");
-        u.setUsuario(sc.nextLine());
+        String nombreUsuario = sc.nextLine();
+        
+        if (CrudUsuario.buscarUsuario(nombreUsuario) != null) {
+            System.out.println(" Este nombre de usuario ya existe");
+            System.out.println("1. Ingresar otro nombre");
+            System.out.println("2. Iniciar sesión");
+            System.out.print("Seleccione: ");
+            int opcion = validarNumero(1, 2);
+            if (opcion == 2) {
+                login();
+                return;
+            }
+            usuarioExiste = true;
+        } else {
+            u.setUsuario(nombreUsuario);
+        }
+    } while (usuarioExiste);
 
-        System.out.print("Correo: ");
-        u.setCorreo(sc.nextLine());
+    // Validación correo electrónico (único y formato)
+    boolean correoExiste;
+    do {
+        correoExiste = false;
+        System.out.print("Correo electrónico: ");
+        String correo = sc.nextLine();
+        
+        if (!correo.matches("^[\\w.-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
+            System.out.println("Formato inválido. Ejemplo: usuario@dominio.com");
+            correoExiste = true;
+        } 
+        else if (CrudUsuario.buscarUsuarioPorCorreo(correo) != null) {
+            System.out.println(" Este correo ya está registrado");
+            System.out.println("1. Ingresar otro correo");
+            System.out.println("2. Iniciar sesión");
+            System.out.print("Seleccione: ");
+            int opcion = validarNumero(1, 2);
+            if (opcion == 2) {
+                login();
+                return;
+            }
+            correoExiste = true;
+        } else {
+            u.setCorreo(correo);
+        }
+    } while (correoExiste);
 
-        System.out.print("Contraseña: ");
-        u.setContrasenia(sc.nextLine());
+    // Validación contraseña (mínimo 6 caracteres)
+    String contrasenia;
+    do {
+        System.out.print("Contraseña (mínimo 6 caracteres): ");
+        contrasenia = sc.nextLine();
+        if (contrasenia.length() < 6) {
+            System.out.println("La contraseña debe tener al menos 6 caracteres");
+        }
+    } while (contrasenia.length() < 6);
+    u.setContrasenia(contrasenia);
 
-        System.out.print("Edad: ");
+    // Validación edad (1-100 años)
+    float edad;
+    do {
+        System.out.print("Edad (1-100 años): ");
         while (!sc.hasNextFloat()) {
             System.out.println("Por favor introduce un número válido.");
             sc.nextLine();
         }
-        u.setEdad(sc.nextFloat());
+        edad = sc.nextFloat();
+        if (edad < 1 || edad > 100) {
+            System.out.println("La edad debe estar entre 1 y 100 años");
+        }
+    } while (edad < 1 || edad > 100);
+    u.setEdad(edad);
 
-        u.setRol("cliente"); // todos inician como cliente
+    u.setRol("cliente");
 
+    try {
         CrudUsuario.insertarUsuario(u);
-        System.out.println("Registro exitoso, ahora inicia sesión.");
-        login(); // vuelve a llamar login para que inicie sesión
+        System.out.println("\n Registro exitoso!");
+        System.out.println("Ahora puedes iniciar sesión con tus credenciales");
+    } catch (Exception e) {
+        System.out.println("\n Error al registrar: " + e.getMessage());
     }
+    
+    login();
+}
 
     // ===============================
     // Ver perfil del usuario
@@ -110,8 +189,21 @@ public class FuncionesUsuario {
     // Modificar datos como cliente
     // ===============================
     public static void modificarDatosUsuario() {
-        System.out.println("¿Qué deseas modificar?");
-        System.out.println("1. Usuario\n2. Contraseña\n3. Correo\n4. Edad\n5. Cancelar");
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║                                        ║");
+System.out.println("║        MODIFICAR DATOS DE USUARIO      ║");
+System.out.println("║                                        ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║                                        ║");
+System.out.println("║  1.   Cambiar nombre de usuario        ║");
+System.out.println("║  2.   Cambiar contraseña               ║");
+System.out.println("║  3.   Cambiar correo electrónico       ║");
+System.out.println("║  4.   Cambiar edad                     ║");
+System.out.println("║  5.   Cancelar                         ║");
+System.out.println("║                                        ║");
+System.out.println("╚════════════════════════════════════════╝");
+System.out.println("══════════════════════════════════════════");
+System.out.print(" Seleccione una opción: ");
         int opcion = validarNumero(1, 5);
 
         switch (opcion) {
@@ -145,62 +237,105 @@ public class FuncionesUsuario {
     // ===============================
     // Función del admin para modificar usuarios
     // ===============================
-    public static void adminModificaUsuario() {
-        ArrayList<Usuario> lista = CrudUsuario.obtenerUsuarios();
+ public static void adminModificaUsuario() {
+    ArrayList<Usuario> usuarios = CrudUsuario.obtenerUsuarios();
+    
+    System.out.println("\n══════════════════════════ LISTADO DE USUARIOS ══════════════════════════");
+    System.out.println("---------------------------------------------------------------------------");
+    System.out.printf("%-6s %-18s %-30s %-6s %-10s%n", 
+                     "ID", "USUARIO", "CORREO", "EDAD", "ROL");
+    System.out.println("---------------------------------------------------------------------------");
 
-        for (Usuario u : lista) {
-            System.out.println("ID: " + u.getId() + " | Usuario: " + u.getUsuario() + " | Rol: " + u.getRol());
+    for (Usuario u : usuarios) {
+        System.out.printf("%-6d %-18s %-30s %-6.0f %-10s%n",
+                        u.getId(),
+                        u.getUsuario(),
+                        u.getCorreo(),
+                        u.getEdad(),
+                        u.getRol());
+    }
+    
+    System.out.println("═══════════════════════════════════════════════════════════════════════════\n");
+
+    System.out.print("Introduce el ID del usuario a modificar: ");
+    
+    // Validar que se ingrese un número entero
+    int id;
+    while (true) {
+        if (sc.hasNextInt()) {
+            id = sc.nextInt();
+            break;
+        } else {
+            System.out.println("Debes ingresar un número entero válido.");
+            System.out.print("Introduce el ID del usuario a modificar: ");
+            sc.next(); // Limpiar el valor incorrecto
         }
+    }
+    
+    Usuario u = null;
 
-        System.out.print("Introduce el ID del usuario a modificar: ");
-        int id = sc.nextInt();
-        Usuario u = null;
-
-        for (Usuario us : lista) {
-            if (us.getId() == id) {
-                u = us;
-                break;
-            }
+    for (Usuario us : usuarios) {
+        if (us.getId() == id) {
+            u = us;
+            break;
         }
-
-        if (u == null) {
-            System.out.println("Usuario no encontrado.");
-            return;
-        }
-
-        System.out.println("¿Qué deseas modificar?");
-        System.out.println("1. Usuario\n2. Contraseña\n3. Correo\n4. Edad\n5. Rol\n6. Cancelar");
-        int opcion = validarNumero(1, 6);
-
-        switch (opcion) {
-            case 1:
-                System.out.print("Nuevo usuario: ");
-                u.setUsuario(sc.next());
-                break;
-            case 2:
-                System.out.print("Nueva contraseña: ");
-                u.setContrasenia(sc.next());
-                break;
-            case 3:
-                System.out.print("Nuevo correo: ");
-                u.setCorreo(sc.next());
-                break;
-            case 4:
-                System.out.print("Nueva edad: ");
-                u.setEdad(sc.nextFloat());
-                break;
-            case 5:
-                System.out.println("Selecciona nuevo rol:\n1. Admin\n2. Cliente");
-                int rol = validarNumero(1, 2);
-                u.setRol(rol == 1 ? "admin" : "cliente");
-                break;
-            case 6:
-                return;
-        }
-
-        CrudUsuario.actualizarUsuario(u);
     }
 
+    if (u == null) {
+        System.out.println("Usuario no encontrado.");
+        return;
+    }
+
+    System.out.println("╔════════════════════════════════════════╗");
+    System.out.println("║                                        ║");
+    System.out.println("║       MODIFICACIÓN DE USUARIO          ║");
+    System.out.println("║                                        ║");
+    System.out.println("╠════════════════════════════════════════╣");
+    System.out.println("║                                        ║");
+    System.out.println("║  1. Nombre de usuario                  ║");
+    System.out.println("║  2. Contraseña                         ║");
+    System.out.println("║  3. Correo electrónico                 ║");
+    System.out.println("║  4. Edad                               ║");
+    System.out.println("║  5. Rol                                ║");
+    System.out.println("║  6. Cancelar                           ║");
+    System.out.println("║                                        ║");
+    System.out.println("╚════════════════════════════════════════╝");
+    System.out.println("══════════════════════════════════════════");
+    System.out.print(" Seleccione qué desea modificar: ");
+    int opcion = validarNumero(1, 6);
+
+    switch (opcion) {
+        case 1:
+            System.out.print("Nuevo usuario: ");
+            u.setUsuario(sc.next());
+            break;
+        case 2:
+            System.out.print("Nueva contraseña: ");
+            u.setContrasenia(sc.next());
+            break;
+        case 3:
+            System.out.print("Nuevo correo: ");
+            u.setCorreo(sc.next());
+            break;
+        case 4:
+            System.out.print("Nueva edad: ");
+            while (!sc.hasNextFloat()) {
+                System.out.println("Por favor introduce un número válido para la edad:");
+                sc.next(); // Limpiar el valor incorrecto
+            }
+            u.setEdad(sc.nextFloat());
+            break;
+        case 5:
+            System.out.println("Selecciona nuevo rol:\n1. Admin\n2. Cliente");
+            int rol = validarNumero(1, 2);
+            u.setRol(rol == 1 ? "admin" : "cliente");
+            break;
+        case 6:
+            return;
+    }
+
+    CrudUsuario.actualizarUsuario(u);
+}
     // ===============================
     // Validar solo opciones numéricas válidas
     // ===============================
@@ -242,12 +377,14 @@ public class FuncionesUsuario {
 public static void menuGestionUsuarios() {
     int opcion;
     do {
-        System.out.println("\n--- Gestión de Usuarios ---");
-        System.out.println("1. Ver usuarios");
-        System.out.println("2. Editar usuario");
-        System.out.println("3. Eliminar usuario");
-        System.out.println("4. Agregar nuevo usuario");
-        System.out.println("5. Volver al menú admin");
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║          GESTIÓN DE USUARIOS           ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║ 1. Ver usuarios     2. Editar usuario  ║");
+System.out.println("║ 3. Eliminar usuario 4. Nuevo usuario   ║");
+System.out.println("║ 5. Volver                              ║");
+System.out.println("╚════════════════════════════════════════╝");
+System.out.print("Operación [1-5]: ");
 
         opcion = validarNumero(1, 5);
 
@@ -275,11 +412,24 @@ public static void menuGestionUsuarios() {
 // Mostrar todos los usuarios (para ver o consultar)
 // ===============================
 public static void mostrarTodosLosUsuarios() {
-    ArrayList<Usuario> lista = CrudUsuario.obtenerUsuarios();
-    for (Usuario u : lista) {
-        System.out.println("ID: " + u.getId() + " | Usuario: " + u.getUsuario() +
-                " | Correo: " + u.getCorreo() + " | Edad: " + u.getEdad() + " | Rol: " + u.getRol());
+    ArrayList<Usuario> usuarios = CrudUsuario.obtenerUsuarios();
+    
+    System.out.println("\n══════════════════════════ LISTADO DE USUARIOS ══════════════════════════");
+    System.out.println("---------------------------------------------------------------------------");
+    System.out.printf("%-6s %-18s %-30s %-6s %-10s%n", 
+                     "ID", "USUARIO", "CORREO", "EDAD", "ROL");
+    System.out.println("---------------------------------------------------------------------------");
+
+    for (Usuario u : usuarios) {
+        System.out.printf("%-6d %-18s %-30s %-6.0f %-10s%n",
+                        u.getId(),
+                        u.getUsuario(),
+                        u.getCorreo(),
+                        u.getEdad(),
+                        u.getRol());
     }
+    
+    System.out.println("═══════════════════════════════════════════════════════════════════════════\n");
 }
 
 // ===============================

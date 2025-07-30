@@ -1,7 +1,5 @@
 package Comentarios;
-// ===============================
-// Clase Comentario.java
-// ===============================
+//hecho por: Brayan Castañeda
 // Contiene los atributos de los comentarios, constructores, getters/setters y toString
 
 import java.util.Date;
@@ -94,6 +92,7 @@ public class Comentario {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+    
 
     // ===============================
     // Método toString()

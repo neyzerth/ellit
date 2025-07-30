@@ -1,13 +1,10 @@
 package Usuario;
-// ===============================
-// Clase CrudUsuario.java
-// ===============================
+//hecho por Daniel Barrientos
 // Encargada de conectarse a la base de datos y realizar operaciones CRUD
 
+import Conexion.conn;
 import java.sql.*;
 import java.util.ArrayList;
-
-import Conexion.conn;
 
 public class CrudUsuario {
 
@@ -114,4 +111,29 @@ public class CrudUsuario {
             System.err.println("Error al eliminar: " + e.getMessage());
         }
     }
+
+    // ===============================
+    // Buscar usuario por correo
+    // ===============================
+public static Usuario buscarUsuarioPorCorreo(String correo) {
+    try (Connection con = conn.conectarBD()) {
+        String sql = "SELECT * FROM usuarios WHERE correo = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, correo);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            return new Usuario(
+                rs.getInt("id"),
+                rs.getString("usuario"),
+                rs.getString("contrasenia"),
+                rs.getString("correo"),
+                rs.getFloat("edad"),
+                rs.getString("rol")
+            );
+        }
+    } catch (SQLException e) {
+        System.err.println("Error al buscar por correo: " + e.getMessage());
+    }
+    return null;
+}
 }

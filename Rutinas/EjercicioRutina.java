@@ -1,7 +1,5 @@
 package Rutinas;
-// ===============================
-// Clase EjercicioRutina.java
-// ===============================
+// hecho por Jesus Virrueta
 // Contiene los atributos de los ejercicios de cada rutina
 
 public class EjercicioRutina {
