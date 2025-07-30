@@ -1,5 +1,5 @@
 package Tienda;
-
+//Hecho por Gutierrez Figueroa Alexis Alberto
 public class Producto {
     // Atributos de la clase Producto
     private int idProducto;        // Identificador único del producto

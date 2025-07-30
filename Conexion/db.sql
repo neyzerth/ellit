@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-07-2025 a las 19:41:20
+-- Tiempo de generación: 30-07-2025 a las 20:32:58
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -222,16 +222,21 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`idProducto`, `nombre`, `descripcion`, `precio`, `stock`, `categoria`, `fechaCreacion`) VALUES
-(17, 'Proteína Whey Gold Standard', 'Proteína de suero de leche de alta calidad, sabor chocolate, 2.27kg (5lb)', 899.99, 50, 'Suplementos', '2025-07-30 17:28:33'),
-(18, 'Creatina Monohidratada', 'Creatina pura micronizada, 300g, aumenta fuerza y rendimiento', 499.99, 30, 'Suplementos', '2025-07-30 17:28:33'),
-(19, 'Camiseta Térmica Elite', 'Camiseta de compresión transpirable para entrenamiento intenso', 349.99, 100, 'Ropa', '2025-07-30 17:28:33'),
-(20, 'Short Deportivo Pro', 'Short con tecnología dry-fit y bolsillo para llaves', 279.99, 80, 'Ropa', '2025-07-30 17:28:33'),
-(21, 'Guantes para Levantamiento', 'Guantes con soporte para muñeca y agarre antideslizante', 399.99, 40, 'Accesorios', '2025-07-30 17:28:33'),
-(22, 'Cinturón de Levantamiento', 'Cinturón de cuero genuino para powerlifting', 649.99, 25, 'Accesorios', '2025-07-30 17:28:33'),
-(23, 'Mancuernas Ajustables 20kg', 'Par de mancuernas ajustables de 2.5-20kg cada una', 2199.99, 15, 'Equipamiento', '2025-07-30 17:28:33'),
-(24, 'Barra Olímpica Elite', 'Barra profesional para levantamiento de pesas, 20kg', 1599.99, 10, 'Equipamiento', '2025-07-30 17:28:33'),
-(25, 'Banda de Resistencia', 'Set de 5 bandas con diferentes niveles de resistencia', 299.99, 50, 'Equipamiento', '2025-07-30 17:28:33'),
-(26, 'Colchoneta Yoga Premium', 'Colchoneta antideslizante de 6mm de grosor', 249.99, 60, 'Equipamiento', '2025-07-30 17:28:33');
+(28, 'Proteína Whey 2kg', 'Proteína de suero de leche sabor chocolate, 2kg', 899.99, 50, 'Suplementos', '2025-07-30 18:30:51'),
+(29, 'Creatina 300g', 'Creatina monohidratada micronizada, 300g', 499.99, 30, 'Suplementos', '2025-07-30 18:30:51'),
+(30, 'Camiseta Elite', 'Camiseta transpirable para entrenamiento intenso', 349.99, 100, 'Ropa', '2025-07-30 18:30:51'),
+(31, 'Short Pro Gym', 'Short deportivo con tecnología dry-fit', 279.99, 80, 'Ropa', '2025-07-30 18:30:51'),
+(32, 'Guantes Gym', 'Guantes con soporte para muñeca', 399.99, 40, 'Accesorios', '2025-07-30 18:30:51'),
+(33, 'Cinturón Gym', 'Cinturón profesional para powerlifting', 649.99, 25, 'Accesorios', '2025-07-30 18:30:51'),
+(34, 'Mancuernas 20kg', 'Par de mancuernas ajustables 2.5-20kg', 2199.99, 15, 'Equipamiento', '2025-07-30 18:30:51'),
+(35, 'Barra Olímpica', 'Barra profesional para levantamiento', 1599.99, 10, 'Equipamiento', '2025-07-30 18:30:51'),
+(36, 'Bandas Resistencia', 'Set de 5 bandas con distintos niveles', 299.99, 50, 'Equipamiento', '2025-07-30 18:30:51'),
+(37, 'Colchoneta Yoga', 'Colchoneta antideslizante 6mm', 249.99, 60, 'Equipamiento', '2025-07-30 18:30:51'),
+(38, 'BCAA 200g', 'Aminoácidos ramificados en polvo', 599.99, 40, 'Suplementos', '2025-07-30 18:30:51'),
+(39, 'Pre-entreno', 'Pre-entrenamiento en polvo sabor frutos rojos', 499.99, 35, 'Suplementos', '2025-07-30 18:30:51'),
+(40, 'Pantalón Deportivo', 'Pantalón térmico para entrenamiento', 399.99, 60, 'Ropa', '2025-07-30 18:30:51'),
+(41, 'Calcetines Técnicos', 'Calcetines deportivos con soporte', 149.99, 100, 'Ropa', '2025-07-30 18:30:51'),
+(42, 'Rodilleras', 'Rodilleras de neopreno para soporte', 349.99, 30, 'Accesorios', '2025-07-30 18:30:51');
 
 -- --------------------------------------------------------
 
@@ -429,7 +434,7 @@ ALTER TABLE `plan_nutricional`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `rutinas`
@@ -441,7 +446,7 @@ ALTER TABLE `rutinas`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`

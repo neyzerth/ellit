@@ -1,5 +1,5 @@
 package Tienda;
-
+//Hecho por Gutierrez Figueroa Alexis Alberto
 import java.util.ArrayList;
 
 public class Carrito {

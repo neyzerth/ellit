@@ -1,5 +1,5 @@
 package Tienda;
-
+//Hecho por Gutierrez Figueroa Alexis Alberto
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;

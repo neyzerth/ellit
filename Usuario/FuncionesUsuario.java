@@ -86,12 +86,22 @@ System.out.print(" Selecciona una opción: ");
     // Validación nombre de usuario (único)
     boolean usuarioExiste;
     do {
-        usuarioExiste = false;
+    usuarioExiste = false;
+    boolean usuarioVacio = true;
+    
+    do {
         System.out.print("Nombre de usuario: ");
-        String nombreUsuario = sc.nextLine();
+        String nombreUsuario = sc.nextLine().trim(); // trim() elimina espacios en blanco al inicio y final
+        
+        if (nombreUsuario.isEmpty()) {
+            System.out.println("El nombre de usuario no puede estar vacío");
+            continue;
+        }
+        
+        usuarioVacio = false;
         
         if (CrudUsuario.buscarUsuario(nombreUsuario) != null) {
-            System.out.println(" Este nombre de usuario ya existe");
+            System.out.println("Este nombre de usuario ya existe");
             System.out.println("1. Ingresar otro nombre");
             System.out.println("2. Iniciar sesión");
             System.out.print("Seleccione: ");
@@ -104,7 +114,9 @@ System.out.print(" Selecciona una opción: ");
         } else {
             u.setUsuario(nombreUsuario);
         }
-    } while (usuarioExiste);
+    } while (usuarioVacio);
+    
+} while (usuarioExiste);
 
     // Validación correo electrónico (único y formato)
     boolean correoExiste;
