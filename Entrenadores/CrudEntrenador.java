@@ -1,8 +1,6 @@
 
 package Entrenadores;
-// ===============================
-// Clase CrudEntrenador.java
-// ===============================
+//hecho por leslie Plata
 // Encargada de las operaciones con la base de datos
 
 import Conexion.conn;

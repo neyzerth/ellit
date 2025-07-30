@@ -1,8 +1,6 @@
 package Entrenadores;
 
-// ===============================
-// Clase FuncionesEntrenador.java
-// ===============================
+//hecho por leslie Plata
 // Contiene los menús y funciones de interacción con el usuario
 
 import Usuario.FuncionesUsuario;
@@ -23,11 +21,19 @@ public class FuncionesEntrenador {
     public static void menuEntrenadores() {
         int opcion;
         do {
-            System.out.println("\n--- ENTRENADORES ---");
-            System.out.println("1. Ver todos los entrenadores");
-            System.out.println("2. Buscar por nombre");
-            System.out.println("3. Buscar por especialidad");
-            System.out.println("4. Volver");
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║                                        ║");
+System.out.println("║            ENTRENADORES                ║");
+System.out.println("║                                        ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║                                        ║");
+System.out.println("║  1. Ver todos los entrenadores         ║");
+System.out.println("║  2. Buscar por nombre                  ║");
+System.out.println("║  3. Buscar por especialidad            ║");
+System.out.println("║  4. Volver                             ║");
+System.out.println("║                                        ║");
+System.out.println("╚════════════════════════════════════════╝");
+System.out.print(" Seleccione una opción: ");
             
             opcion = FuncionesUsuario.validarNumero(1, 4);
             
@@ -54,12 +60,20 @@ public class FuncionesEntrenador {
     public static void menuGestionEntrenadores() {
         int opcion;
         do {
-            System.out.println("\n--- GESTIÓN DE ENTRENADORES ---");
-            System.out.println("1. Ver todos los entrenadores");
-            System.out.println("2. Agregar nuevo entrenador");
-            System.out.println("3. Editar entrenador");
-            System.out.println("4. Desactivar entrenador");
-            System.out.println("5. Volver");
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║                                        ║");
+System.out.println("║      GESTIÓN DE ENTRENADORES           ║");
+System.out.println("║                                        ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║                                        ║");
+System.out.println("║  1. Ver todos los entrenadores         ║");
+System.out.println("║  2. Agregar nuevo entrenador           ║");
+System.out.println("║  3. Editar entrenador                  ║");
+System.out.println("║  4. Desactivar entrenador              ║");
+System.out.println("║  5. Volver                             ║");
+System.out.println("║                                        ║");
+System.out.println("╚════════════════════════════════════════╝");
+System.out.print(" Seleccione una opción: ");
             
             opcion = FuncionesUsuario.validarNumero(1, 5);
             
@@ -105,7 +119,7 @@ public class FuncionesEntrenador {
     // ===============================
     private static void buscarEntrenadorPorNombre() {
         System.out.print("\nIngrese el nombre o parte del nombre: ");
-        sc.nextLine(); // Limpiar buffer
+        sc.nextLine(); 
         String nombre = sc.nextLine();
         
         ArrayList<Entrenador> resultados = CrudEntrenador.buscarPorNombre(nombre);
@@ -152,7 +166,7 @@ public class FuncionesEntrenador {
 // ===============================
 private static void agregarNuevoEntrenador() {
     Entrenador nuevo = new Entrenador();
-    sc.nextLine(); // Limpiar buffer
+    sc.nextLine(); 
     
     System.out.println("\n--- NUEVO ENTRENADOR ---");
     
@@ -237,13 +251,21 @@ private static void agregarNuevoEntrenador() {
         System.out.println(aEditar);
         
         // Menú de edición
-        System.out.println("\n¿Qué desea editar?");
-        System.out.println("1. Nombre");
-        System.out.println("2. Especialidad");
-        System.out.println("3. Correo");
-        System.out.println("4. Teléfono");
-        System.out.println("5. Estado");
-        System.out.println("6. Cancelar");
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║                                        ║");
+System.out.println("║          ¿QUÉ DESEA EDITAR?            ║");
+System.out.println("║                                        ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║                                        ║");
+System.out.println("║  1. Nombre                             ║");
+System.out.println("║  2. Especialidad                       ║");
+System.out.println("║  3. Correo                             ║");
+System.out.println("║  4. Teléfono                           ║");
+System.out.println("║  5. Estado                             ║");
+System.out.println("║  6. Cancelar                           ║");
+System.out.println("║                                        ║");
+System.out.println("╚════════════════════════════════════════╝");
+System.out.print(" Seleccione una opción: ");
         
         int opcion = FuncionesUsuario.validarNumero(1, 6);
         sc.nextLine(); // Limpiar buffer

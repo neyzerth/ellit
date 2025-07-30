@@ -1,13 +1,10 @@
 package Rutinas;
-// ===============================
-// Clase FuncionesRutinas.java
-// ===============================
+//hecho por Jesus Virrueta
 // Contiene todas las funciones de interacción con el usuario para rutinas
 
+import Usuario.FuncionesUsuario;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import Usuario.FuncionesUsuario;
 
 public class FuncionesRutinas {
     static Scanner sc = new Scanner(System.in);
@@ -18,13 +15,21 @@ public class FuncionesRutinas {
     public static void menuRutinas() {
         int opcion;
         do {
-            System.out.println("\n--- MENÚ RUTINAS ---");
-            System.out.println("1. Ver todas las rutinas");
-            System.out.println("2. Buscar por objetivo");
-            System.out.println("3. Buscar por dificultad");
-            System.out.println("4. Buscar por días a la semana");
-            System.out.println("5. Buscar por nombre");
-            System.out.println("6. Volver al menú principal");
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║                                        ║");
+System.out.println("║           MENÚ DE RUTINAS              ║");
+System.out.println("║                                        ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║                                        ║");
+System.out.println("║  1. Ver todas las rutinas              ║");
+System.out.println("║  2. Buscar por objetivo                ║");
+System.out.println("║  3. Buscar por dificultad              ║");
+System.out.println("║  4. Buscar por días a la semana        ║");
+System.out.println("║  5. Buscar por nombre                  ║");
+System.out.println("║  6. Volver al menú principal           ║");
+System.out.println("║                                        ║");
+System.out.println("╚════════════════════════════════════════╝");
+System.out.print(" Seleccione una opción: ");
             
             opcion = FuncionesUsuario.validarNumero(1, 6);
             
@@ -73,12 +78,20 @@ public class FuncionesRutinas {
     // Buscar por objetivo
     // ===============================
     public static void buscarPorObjetivo() {
-        System.out.println("\nSeleccione el objetivo:");
-        System.out.println("1. Tonificar");
-        System.out.println("2. Cardio");
-        System.out.println("3. Perder grasa");
-        System.out.println("4. Aumentar masa muscular");
-        System.out.println("5. Resistencia");
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║                                        ║");
+System.out.println("║        SELECCIONE EL OBJETIVO          ║");
+System.out.println("║                                        ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║                                        ║");
+System.out.println("║  1. Tonificar                          ║");
+System.out.println("║  2. Cardio                             ║");
+System.out.println("║  3. Perder grasa                       ║");
+System.out.println("║  4. Aumentar masa muscular             ║");
+System.out.println("║  5. Resistencia                        ║");
+System.out.println("║                                        ║");
+System.out.println("╚════════════════════════════════════════╝");
+System.out.print(" Seleccione una opción: ");
         
         int opcion = FuncionesUsuario.validarNumero(1, 5);
         String objetivo = "";
@@ -109,10 +122,18 @@ public class FuncionesRutinas {
     // Buscar por dificultad
     // ===============================
     public static void buscarPorDificultad() {
-        System.out.println("\nSeleccione la dificultad:");
-        System.out.println("1. Baja");
-        System.out.println("2. Estándar");
-        System.out.println("3. Avanzada");
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║                                        ║");
+System.out.println("║      SELECCIONE LA DIFICULTAD          ║");
+System.out.println("║                                        ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║                                        ║");
+System.out.println("║  1. Baja                               ║");
+System.out.println("║  2. Estándar                           ║");
+System.out.println("║  3. Avanzada                           ║");
+System.out.println("║                                        ║");
+System.out.println("╚════════════════════════════════════════╝");
+System.out.print(" Seleccione una opción: ");
         
         int opcion = FuncionesUsuario.validarNumero(1, 3);
         String dificultad = "";
@@ -254,10 +275,18 @@ public class FuncionesRutinas {
         // Si es admin, mostrar opciones adicionales
         if (FuncionesUsuario.getUsuarioActual() != null && 
             FuncionesUsuario.getUsuarioActual().getRol().equalsIgnoreCase("admin")) {
-            System.out.println("\nOpciones de administrador:");
-            System.out.println("1. Editar rutina");
-            System.out.println("2. Eliminar rutina");
-            System.out.println("3. Volver");
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║                                        ║");
+System.out.println("║         OPCIONES DE ADMINISTRADOR      ║");
+System.out.println("║                                        ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║                                        ║");
+System.out.println("║  1. Editar rutina                      ║");
+System.out.println("║  2. Eliminar rutina                    ║");
+System.out.println("║  3. Volver                             ║");
+System.out.println("║                                        ║");
+System.out.println("╚════════════════════════════════════════╝");
+System.out.print(" Seleccione una opción: ");
             
             int op = FuncionesUsuario.validarNumero(1, 3);
             
@@ -285,12 +314,20 @@ public class FuncionesRutinas {
     public static void menuGestionRutinas() {
         int opcion;
         do {
-            System.out.println("\n--- GESTIÓN DE RUTINAS (ADMIN) ---");
-            System.out.println("1. Ver todas las rutinas");
-            System.out.println("2. Agregar nueva rutina");
-            System.out.println("3. Editar rutina existente");
-            System.out.println("4. Eliminar rutina");
-            System.out.println("5. Volver al menú admin");
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║                                        ║");
+System.out.println("║      GESTIÓN DE RUTINAS (ADMIN)        ║");
+System.out.println("║                                        ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║                                        ║");
+System.out.println("║  1. Ver todas las rutinas              ║");
+System.out.println("║  2. Agregar nueva rutina               ║");
+System.out.println("║  3. Editar rutina existente            ║");
+System.out.println("║  4. Eliminar rutina                    ║");
+System.out.println("║  5. Volver al menú admin               ║");
+System.out.println("║                                        ║");
+System.out.println("╚════════════════════════════════════════╝");
+System.out.print(" Seleccione una opción: ");
             
             opcion = FuncionesUsuario.validarNumero(1, 5);
             
@@ -357,12 +394,20 @@ public class FuncionesRutinas {
         nuevaRutina.setDescripcionRutina(sc.nextLine());
         
         // Objetivo
-        System.out.println("Seleccione el objetivo:");
-        System.out.println("1. Tonificar");
-        System.out.println("2. Cardio");
-        System.out.println("3. Perder grasa");
-        System.out.println("4. Aumentar masa muscular");
-        System.out.println("5. Resistencia");
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║                                        ║");
+System.out.println("║        SELECCIONE EL OBJETIVO          ║");
+System.out.println("║                                        ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║                                        ║");
+System.out.println("║  1. Tonificar                          ║");
+System.out.println("║  2. Cardio                             ║");
+System.out.println("║  3. Perder grasa                       ║");
+System.out.println("║  4. Aumentar masa muscular             ║");
+System.out.println("║  5. Resistencia                        ║");
+System.out.println("║                                        ║");
+System.out.println("╚════════════════════════════════════════╝");
+System.out.print(" Seleccione una opción: ");
         int opObjetivo = FuncionesUsuario.validarNumero(1, 5);
         switch (opObjetivo) {
             case 1: nuevaRutina.setObjetivoRutina("Tonificar"); break;
@@ -373,10 +418,18 @@ public class FuncionesRutinas {
         }
         
         // Dificultad
-        System.out.println("Seleccione la dificultad:");
-        System.out.println("1. Baja");
-        System.out.println("2. Estándar");
-        System.out.println("3. Avanzada");
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║                                        ║");
+System.out.println("║       SELECCIONE LA DIFICULTAD         ║");
+System.out.println("║                                        ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║                                        ║");
+System.out.println("║  1. Baja                               ║");
+System.out.println("║  2. Estándar                           ║");
+System.out.println("║  3. Avanzada                           ║");
+System.out.println("║                                        ║");
+System.out.println("╚════════════════════════════════════════╝");
+System.out.print(" Seleccione una opción: ");
         int opDificultad = FuncionesUsuario.validarNumero(1, 3);
         switch (opDificultad) {
             case 1: nuevaRutina.setDificultadRutina("Baja"); break;
@@ -455,12 +508,20 @@ public class FuncionesRutinas {
     public static void menuEditarRutina(Rutinas rutina) {
         int opcion;
         do {
-            System.out.println("\n--- EDITAR RUTINA: " + rutina.getNombreRutina() + " ---");
-            System.out.println("1. Editar información básica");
-            System.out.println("2. Gestionar ejercicios");
-            System.out.println("3. Ver rutina actual");
-            System.out.println("4. Guardar cambios y volver");
-            System.out.println("5. Volver sin guardar");
+System.out.println("╔════════════════════════════════════════════════╗");
+System.out.println("║                                                ║");
+System.out.println("║      EDITAR RUTINA: " + String.format("%-25s", rutina.getNombreRutina()) + " ║");
+System.out.println("║                                                ║");
+System.out.println("╠════════════════════════════════════════════════╣");
+System.out.println("║                                                ║");
+System.out.println("║  1. Editar información básica                  ║");
+System.out.println("║  2. Gestionar ejercicios                       ║");
+System.out.println("║  3. Ver rutina actual                          ║");
+System.out.println("║  4. Guardar cambios y volver                   ║");
+System.out.println("║  5. Volver sin guardar                         ║");
+System.out.println("║                                                ║");
+System.out.println("╚════════════════════════════════════════════════╝");
+System.out.print(" Seleccione una opción: ");
             
             opcion = FuncionesUsuario.validarNumero(1, 5);
             
@@ -561,11 +622,19 @@ public class FuncionesRutinas {
     public static void menuGestionEjercicios(Rutinas rutina) {
         int opcion;
         do {
-            System.out.println("\n--- GESTIÓN DE EJERCICIOS ---");
-            System.out.println("1. Agregar ejercicios a un día");
-            System.out.println("2. Eliminar ejercicios de un día");
-            System.out.println("3. Ver todos los ejercicios");
-            System.out.println("4. Volver");
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║                                        ║");
+System.out.println("║       GESTIÓN DE EJERCICIOS            ║");
+System.out.println("║                                        ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║                                        ║");
+System.out.println("║  1. Agregar ejercicios a un día        ║");
+System.out.println("║  2. Eliminar ejercicios de un día      ║");
+System.out.println("║  3. Ver todos los ejercicios           ║");
+System.out.println("║  4. Volver                             ║");
+System.out.println("║                                        ║");
+System.out.println("╚════════════════════════════════════════╝");
+System.out.print(" Seleccione una opción: ");
             
             opcion = FuncionesUsuario.validarNumero(1, 4);
             

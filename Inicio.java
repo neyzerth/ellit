@@ -1,8 +1,7 @@
-// ===============================
-// Clase Inicio.java
-// ===============================
+
 // Esta clase contiene el punto de entrada principal del sistema ELLIT
 // Se encarga de iniciar el login y redirigir al menú correspondiente
+// hecho por Jesus Virrueta
 
 import Usuario.FuncionesUsuario;
 
@@ -20,12 +19,21 @@ public class Inicio {
 
     public static void main(String[] args) {
         limpiarPantalla();
-        // ===============================
-        // Bienvenida al sistema
-        // ===============================
-        System.out.println("=====================================");
-        System.out.println("      BIENVENIDO A ELLIT");
-        System.out.println("=====================================");
+    System.out.println("╔═══════════════════════════════════════════╗");
+    System.out.println("║                                           ║");
+    System.out.println("║   ███████╗██╗     ██╗     ██╗████████╗    ║");
+    System.out.println("║   ██╔════╝██║     ██║     ██║╚══██╔══╝    ║");
+    System.out.println("║   █████╗  ██║     ██║     ██║   ██║       ║");
+    System.out.println("║   ██╔══╝  ██║     ██║     ██║   ██║       ║");
+    System.out.println("║   ███████╗███████╗███████╗██║   ██║       ║");
+    System.out.println("║   ╚══════╝╚══════╝╚══════╝╚═╝   ╚═╝       ║");
+    System.out.println("║                                           ║");
+    System.out.println("╚═══════════════════════════════════════════╝");
+    System.out.println("═════════════════════════════════════════════");
+    System.out.println("  Versión 1.0 | © 2025 ELLIT Company");      
+   
+    
+    
 
         // Llamamos a la función login del sistema
         // Esta función está en FuncionesUsuario.java y maneja tanto login como registro

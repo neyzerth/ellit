@@ -1,7 +1,5 @@
 package Entrenadores;
-// ===============================
-// Clase Entrenador.java
-// ===============================
+//hecho por leslie Plata
 // Contiene los atributos, constructores, getters/setters y toString
 
 public class Entrenador {

@@ -1,7 +1,5 @@
 package Usuario;
-// ===============================
-// Clase Usuario.java
-// ===============================
+//hecho por Daniel Barrientos
 // Aquí se definen los atributos del usuario, constructores, getters/setters y toString
 // Esta clase solo modela los datos, no contiene lógica de negocio
 

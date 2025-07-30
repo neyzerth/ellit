@@ -1,7 +1,5 @@
 package Conexion;
-// ===============================
-// Clase conn.java
-// ===============================
+//hecha por Jesus Virrueta
 // Se encarga de conectar y desconectar la base de datos MySQL local
 
 import java.sql.Connection;

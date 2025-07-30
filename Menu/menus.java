@@ -1,8 +1,9 @@
+//hecho por Jesus Virrueta
 package Menu;
-
 
 import Comentarios.FuncionesComentarios;
 import Entrenadores.FuncionesEntrenador;
+import Planes.funPlan;
 import Rutinas.FuncionesRutinas;
 import Tienda.FuncionesTienda;
 import Tienda.FuncionesTiendaAdmin;
@@ -19,14 +20,23 @@ public class menus {
     public static void menuUsuario() {
         int op = 0;
         do {
-            System.out.println("\n--- Menú Usuario ---");
-            System.out.println("1. Ver perfil");
-            System.out.println("2. Comentarios");
-            System.out.println("3. Rutinas");
-            System.out.println("4. Planes Nutricionales");
-            System.out.println("5. Entrenadores");
-            System.out.println("6. Tienda");
-            System.out.println("7. Cerrar sesión");
+        System.out.println("╔════════════════════════════════════════╗");
+        System.out.println("║                                        ║");
+        System.out.println("║           MENÚ PRINCIPAL               ║");
+        System.out.println("║                                        ║");
+        System.out.println("╠════════════════════════════════════════╣");
+        System.out.println("║                                        ║");
+        System.out.println("║  1.  Ver mi perfil                     ║");
+        System.out.println("║  2.  Comentarios                       ║");
+        System.out.println("║  3.  Rutinas                           ║");
+        System.out.println("║  4.  Planes nutricionales              ║");
+        System.out.println("║  5.  Entrenadores                      ║");
+        System.out.println("║  6.  Tienda                            ║");
+        System.out.println("║  7.  Cerrar sesión                     ║");
+        System.out.println("║                                        ║");
+        System.out.println("╚════════════════════════════════════════╝");
+        System.out.println("══════════════════════════════════════════");
+        System.out.print(" Seleccione una opción: ");
 
             op = FuncionesUsuario.validarNumero(1, 7);
 
@@ -39,6 +49,9 @@ public class menus {
                     break;
                      case 3:
                      FuncionesRutinas.menuRutinas();
+                    break;
+                    case 4:
+                    funPlan.verPlanesNutricionales();
                     break;
                      case 5: 
                     FuncionesEntrenador.menuEntrenadores();
@@ -61,15 +74,24 @@ public class menus {
     public static void menuAdmin() {
         int op = 0;
         do {
-            System.out.println("\n--- Menú Admin ---");
-            System.out.println("1. Gestionar usuarios");
-            System.out.println("2. Gestionar comentarios");
-            System.out.println("3. Gestionar rutinas");
-            System.out.println("4. Gestionar planes nutricionales");
-            System.out.println("5. Gestionar entrenadores");
-            System.out.println("6. Gestionar tienda");
-            System.out.println("7. Entrar a menú normal");
-            System.out.println("8. Cerrar sesión");
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║                                        ║");
+System.out.println("║          MENÚ ADMINISTRADOR            ║");
+System.out.println("║                                        ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║                                        ║");
+System.out.println("║  1.  Gestionar usuarios                ║");
+System.out.println("║  2.  Gestionar comentarios             ║");
+System.out.println("║  3.  Gestionar rutinas                 ║");
+System.out.println("║  4.  Gestionar planes nutricionales    ║");
+System.out.println("║  5.  Gestionar entrenadores            ║");
+System.out.println("║  6.  Gestionar tienda                  ║");
+System.out.println("║  7.  Entrar a menú normal              ║");
+System.out.println("║  8.  Cerrar sesión                     ║");
+System.out.println("║                                        ║");
+System.out.println("╚════════════════════════════════════════╝");
+System.out.println("══════════════════════════════════════════");
+System.out.print(" Seleccione una opción: ");
 
             op = FuncionesUsuario.validarNumero(1, 8);
 
@@ -83,6 +105,10 @@ public class menus {
                     case 3:
                     FuncionesRutinas.menuGestionRutinas();
                  break;
+                 case 4:
+                    funPlan.GestionPlanNutricional();
+
+                    break;
                  case 5: 
     FuncionesEntrenador.menuGestionEntrenadores();
     break;
@@ -107,15 +133,25 @@ public class menus {
     public static void menuNormalParaAdmin() {
         int op = 0;
         do {
-            System.out.println("\n--- Menú Usuario (Admin) ---");
-            System.out.println("1. Ver perfil");
-            System.out.println("2. Comentarios");
-            System.out.println("3. Rutinas");
-            System.out.println("4. Planes Nutricionales");
-            System.out.println("5. Entrenadores");
-            System.out.println("6. Tienda");
-            System.out.println("7. Cerrar sesión");
-            System.out.println("8. Volver a menú admin");
+        System.out.println("╔════════════════════════════════════════╗");
+        System.out.println("║                                        ║");
+        System.out.println("║           MENÚ PRINCIPAL (Admin)       ║");
+        System.out.println("║                                        ║");
+        System.out.println("╠════════════════════════════════════════╣");
+        System.out.println("║                                        ║");
+        System.out.println("║  1.  Ver mi perfil                     ║");
+        System.out.println("║  2.  Comentarios                       ║");
+        System.out.println("║  3.  Rutinas                           ║");
+        System.out.println("║  4.  Planes nutricionales              ║");
+        System.out.println("║  5.  Entrenadores                      ║");
+        System.out.println("║  6.  Tienda                            ║");
+        System.out.println("║  7.  Cerrar sesión                     ║");
+        System.out.println("║  8.  Volver a menú admin               ║");
+        System.out.println("║                                        ║");
+        System.out.println("╚════════════════════════════════════════╝");
+        System.out.println("══════════════════════════════════════════");
+        System.out.print(" Seleccione una opción: ");
+         
 
             op = FuncionesUsuario.validarNumero(1, 8);
 
@@ -129,6 +165,9 @@ public class menus {
                     case 3:
                    FuncionesRutinas.menuRutinas();
                  break;
+                 case 4:
+                    funPlan.verPlanesNutricionales();
+                    break;
                      case 5: 
                     FuncionesEntrenador.menuEntrenadores();
                    break;

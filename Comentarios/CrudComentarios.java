@@ -1,10 +1,7 @@
 package Comentarios;
-// ===============================
-// Clase CrudComentarios.java
-// ===============================
+//hecho por: Brayan Castañeda
 // Encargada de conectarse a la base de datos y realizar operaciones CRUD para comentarios
 import Conexion.conn;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;

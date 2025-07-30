@@ -1,7 +1,5 @@
 package Rutinas;
-// ===============================
-// Clase Rutinas.java
-// ===============================
+//hecho por Jesus Virrueta
 // Contiene los atributos de las rutinas, constructores, getters/setters y toString
 
 public class Rutinas {

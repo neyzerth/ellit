@@ -1,7 +1,5 @@
 package Comentarios;
-// ===============================
-// Clase FuncionesComentarios.java
-// ===============================
+//hecho por: Brayan Castañeda
 // Contiene todas las funciones de interacción con el usuario para comentarios
 
 import Usuario.FuncionesUsuario;
@@ -12,18 +10,25 @@ import java.util.Scanner;
 public class FuncionesComentarios {
     static Scanner sc = new Scanner(System.in);
     
-    // ===============================
-    // Menú principal de comentarios (usuario normal)
-    // ===============================
+    
     public static void menuComentarios() {
         int opcion;
         do {
-            System.out.println("\n--- MENÚ COMENTARIOS ---");
-            System.out.println("1. Ver comentarios de la plataforma");
-            System.out.println("2. Hacer un comentario");
-            System.out.println("3. Editar mis comentarios");
-            System.out.println("4. Eliminar mis comentarios");
-            System.out.println("5. Regresar");
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║                                        ║");
+System.out.println("║          MENÚ DE COMENTARIOS           ║");
+System.out.println("║                                        ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║                                        ║");
+System.out.println("║  1. Ver comentarios de la plataforma   ║");
+System.out.println("║  2. Hacer un comentario                ║");
+System.out.println("║  3. Editar mis comentarios             ║");
+System.out.println("║  4. Eliminar mis comentarios           ║");
+System.out.println("║  5. Regresar                           ║");
+System.out.println("║                                        ║");
+System.out.println("╚════════════════════════════════════════╝");
+
+System.out.print(" Seleccione una opción: ");
             
             opcion = FuncionesUsuario.validarNumero(1, 5);
             
@@ -54,10 +59,19 @@ public class FuncionesComentarios {
     public static void menuGestionComentarios() {
         int opcion;
         do {
-            System.out.println("\n--- GESTIÓN DE COMENTARIOS (ADMIN) ---");
-            System.out.println("1. Ver todos los comentarios");
-            System.out.println("2. Eliminar comentarios");
-            System.out.println("3. Volver al menú admin");
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║                                        ║");
+System.out.println("║     GESTIÓN DE COMENTARIOS (ADMIN)     ║");
+System.out.println("║                                        ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║                                        ║");
+System.out.println("║  1. Ver todos los comentarios          ║");
+System.out.println("║  2. Eliminar comentarios               ║");
+System.out.println("║  3. Volver al menú admin               ║");
+System.out.println("║                                        ║");
+System.out.println("╚════════════════════════════════════════╝");
+
+System.out.print(" Seleccione una opción: ");
             
             opcion = FuncionesUsuario.validarNumero(1, 3);
             
@@ -208,10 +222,19 @@ public static void crearNuevoComentario() {
         }
         
         // Menú de edición
-        System.out.println("\n¿Qué deseas editar?");
-        System.out.println("1. Texto del comentario");
-        System.out.println("2. Calificación");
-        System.out.println("3. Cancelar");
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║                                        ║");
+System.out.println("║        ¿QUÉ DESEAS EDITAR?             ║");
+System.out.println("║                                        ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║                                        ║");
+System.out.println("║  1. Texto del comentario               ║");
+System.out.println("║  2. Calificación                       ║");
+System.out.println("║  3. Cancelar                           ║");
+System.out.println("║                                        ║");
+System.out.println("╚════════════════════════════════════════╝");
+System.out.println("══════════════════════════════════════════");
+System.out.print(" Seleccione una opción: ");
         
         int opcion = FuncionesUsuario.validarNumero(1, 3);
         

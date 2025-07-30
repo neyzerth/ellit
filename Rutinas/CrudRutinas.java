@@ -1,13 +1,10 @@
 package Rutinas;
-// ===============================
-// Clase CrudRutinas.java
-// ===============================
+//hehco por Jesus Virrueta
 // Encargada de conectarse a la base de datos y realizar operaciones CRUD para rutinas
 
+import Conexion.conn;
 import java.sql.*;
 import java.util.ArrayList;
-
-import Conexion.conn;
 
 public class CrudRutinas {
 
