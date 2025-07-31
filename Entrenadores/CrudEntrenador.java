@@ -130,7 +130,7 @@ public class CrudEntrenador {
     }
 
     // ===============================
-    // Eliminar entrenador (cambiar estado a inactivo)
+    // Cambiar estado a inactivo
     // ===============================
     public static boolean desactivarEntrenador(int id) {
         try (Connection con = conn.conectarBD()) {
@@ -144,4 +144,19 @@ public class CrudEntrenador {
             return false;
         }
     }
+    // ===============================
+// Eliminar permanentemente un entrenador
+// ===============================
+
+public static boolean eliminarEntrenador(int id) {
+    try (Connection con = conn.conectarBD()) {
+        String sql = "DELETE FROM entrenadores WHERE id=?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, id);
+        return ps.executeUpdate() > 0;
+    } catch (SQLException e) {
+        System.err.println("Error al eliminar: " + e.getMessage());
+        return false;
+    }
+}
 }

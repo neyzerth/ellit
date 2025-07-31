@@ -59,43 +59,146 @@ System.out.print(" Seleccione una opción: ");
     // ===============================
     public static void menuGestionEntrenadores() {
         int opcion;
-        do {
+       do {
+        System.out.println("╔════════════════════════════════════════╗");
+        System.out.println("║                                        ║");
+        System.out.println("║      GESTIÓN DE ENTRENADORES           ║");
+        System.out.println("║                                        ║");
+        System.out.println("╠════════════════════════════════════════╣");
+        System.out.println("║                                        ║");
+        System.out.println("║  1. Ver todos los entrenadores         ║");
+        System.out.println("║  2. Agregar nuevo entrenador           ║");
+        System.out.println("║  3. Editar entrenador                  ║");
+        System.out.println("║  4. Activar/Desactivar entrenador      ║");
+        System.out.println("║  5. Eliminar entrenador permanentemente║");
+        System.out.println("║  6. Volver                             ║");
+        System.out.println("║                                        ║");
+        System.out.println("╚════════════════════════════════════════╝");
+        System.out.print(" Seleccione una opción: ");
+        
+        opcion = FuncionesUsuario.validarNumero(1, 6);
+        
+        switch (opcion) {
+            case 1:
+                verTodosLosEntrenadores();
+                break;
+            case 2:
+                agregarNuevoEntrenador();
+                break;
+            case 3:
+                editarEntrenador();
+                break;
+            case 4:
+                cambiarEstadoEntrenador();
+                break;
+            case 5:
+                eliminarEntrenador();
+                break;
+            case 6:
+                System.out.println("Volviendo al menú admin...");
+                break;
+        }
+    } while (opcion != 6);
+}
+// ===============================
+// Cambiar estado (activar/desactivar) 
+// ===============================
+private static void cambiarEstadoEntrenador() {
+    ArrayList<Entrenador> entrenadores = CrudEntrenador.obtenerEntrenadores();
+    
+    if (entrenadores.isEmpty()) {
+        System.out.println("\nNo hay entrenadores para modificar.");
+        return;
+    }
+    
+    System.out.println("\n--- SELECCIONE ENTRENADOR PARA CAMBIAR ESTADO ---");
+    for (Entrenador e : entrenadores) {
+        System.out.println(e);
+    }
+    
+    System.out.print("\nIngrese el ID del entrenador: ");
+    int id = FuncionesUsuario.validarNumero(1, Integer.MAX_VALUE);
+    
+    // Buscar el entrenador
+    Entrenador entrenador = null;
+    for (Entrenador e : entrenadores) {
+        if (e.getId() == id) {
+            entrenador = e;
+            break;
+        }
+    }
+    
+    if (entrenador == null) {
+        System.out.println("ID no válido.");
+        return;
+    }
+    
+    String estadoActual = entrenador.isActivo() ? "Activo" : "Inactivo";
 System.out.println("╔════════════════════════════════════════╗");
 System.out.println("║                                        ║");
-System.out.println("║      GESTIÓN DE ENTRENADORES           ║");
+System.out.println("║       ESTADO ACTUAL: " + String.format("%-18s", estadoActual.toUpperCase()) + "║");
 System.out.println("║                                        ║");
 System.out.println("╠════════════════════════════════════════╣");
 System.out.println("║                                        ║");
-System.out.println("║  1. Ver todos los entrenadores         ║");
-System.out.println("║  2. Agregar nuevo entrenador           ║");
-System.out.println("║  3. Editar entrenador                  ║");
-System.out.println("║  4. Desactivar entrenador              ║");
-System.out.println("║  5. Volver                             ║");
+System.out.println("║  1. " + (entrenador.isActivo() ? "Desactivar" : "Activar") + " entrenador              ║");
+System.out.println("║  2. Cancelar                           ║");
 System.out.println("║                                        ║");
 System.out.println("╚════════════════════════════════════════╝");
 System.out.print(" Seleccione una opción: ");
-            
-            opcion = FuncionesUsuario.validarNumero(1, 5);
-            
-            switch (opcion) {
-                case 1:
-                    verTodosLosEntrenadores();
-                    break;
-                case 2:
-                    agregarNuevoEntrenador();
-                    break;
-                case 3:
-                    editarEntrenador();
-                    break;
-                case 4:
-                    desactivarEntrenador();
-                    break;
-                case 5:
-                    System.out.println("Volviendo al menú admin...");
-                    break;
-            }
-        } while (opcion != 5);
+    
+    int opcion = FuncionesUsuario.validarNumero(1, 2);
+    
+    if (opcion == 1) {
+        boolean nuevoEstado = !entrenador.isActivo();
+        entrenador.setActivo(nuevoEstado);
+        
+        if (CrudEntrenador.actualizarEntrenador(entrenador)) {
+            System.out.println("\nEstado actualizado: " + (nuevoEstado ? "ACTIVADO" : "DESACTIVADO"));
+        } else {
+            System.out.println("\nError al cambiar el estado.");
+        }
     }
+}
+
+// ===============================
+// Eliminar permanentemente (NUEVO método)
+// ===============================
+private static void eliminarEntrenador() {
+    ArrayList<Entrenador> entrenadores = CrudEntrenador.obtenerEntrenadores();
+    
+    if (entrenadores.isEmpty()) {
+        System.out.println("\nNo hay entrenadores para eliminar.");
+        return;
+    }
+    
+    System.out.println("\n--- SELECCIONE ENTRENADOR A ELIMINAR ---");
+    for (Entrenador e : entrenadores) {
+        System.out.println(e);
+    }
+    
+    System.out.print("\nIngrese el ID del entrenador: ");
+    int id = FuncionesUsuario.validarNumero(1, Integer.MAX_VALUE);
+    
+System.out.println("╔════════════════════════════════════════╗");
+System.out.println("║             ¡ADVERTENCIA!              ║");
+System.out.println("╠════════════════════════════════════════╣");
+System.out.println("║  Esto borrará al entrenador            ║");
+System.out.println("║  permanentemente. ¿Está seguro?        ║");
+System.out.println("║                                        ║");
+System.out.println("║  1. Sí                                 ║");
+System.out.println("║  2. No                                 ║");
+System.out.println("╚════════════════════════════════════════╝");
+System.out.print(" Seleccione una opción: ");
+    int confirmar = FuncionesUsuario.validarNumero(1, 2);
+    
+    if (confirmar == 1) {
+        if (CrudEntrenador.eliminarEntrenador(id)) {
+            System.out.println("Entrenador eliminado permanentemente.");
+        } else {
+            System.out.println("Error al eliminar. Verifique el ID.");
+        }
+    }
+}
     
     // ===============================
     // Ver todos los entrenadores
